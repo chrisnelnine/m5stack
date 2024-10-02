@@ -1,7 +1,7 @@
 # M5Stack Arduino Sketches Repository
 
 ## Description
-This repository contains working Arduino sketches designed for the **M5Stack CoreS3** and **Cardputer** controllers. It includes compatible modules like the **M5Unit ENVII** (SHT30 & BMP280), and other attachable sensors or units for embedded system projects. The repository offers practical examples to help hobbyists and professionals with their development of IoT applications using M5Stack devices.
+This repository contains working Arduino sketches designed for the **M5Stack CoreS3** and **Cardputer** controllers. 
 
 ## Hardware Supported
 - **M5Stack CoreS3**: An ESP32-based controller with various built-in features, including a display and a proximity sensor.
