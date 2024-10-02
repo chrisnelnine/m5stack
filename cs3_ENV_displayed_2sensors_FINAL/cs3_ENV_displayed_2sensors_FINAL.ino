@@ -13,7 +13,7 @@ void setup() {
 
   // Display setup
   M5.Display.setRotation(1);
-  M5.Display.setTextColor(GREEN);
+  M5.Display.setTextColor(YELLOW);
   M5.Display.setTextDatum(middle_center);
   M5.Display.setFont(&fonts::Orbitron_Light_32);
   M5.Display.setTextSize(1);
@@ -46,17 +46,17 @@ void loop() {
 
     // Update the BMP280 sensor readings
     float pressure = bmp.readPressure();  // in Pa
-    float altitude = bmp.readAltitude();  // in meters
+    float altitude = bmp.readAltitude(1011);  // in meters
     float temperatureBMP = bmp.readTemperature();
     // Clear the display for updated values
     M5.Display.fillScreen(TFT_BLACK);
 
     // Display the temperature, humidity, pressure, and altitude readings
-    String tempStr = "Tem: " + String(temperatureSHT, 1) + " C";
-    String humidityStr = "Hum: " + String(humidity, 1) + " %";
+    String tempStr = "Temp: " + String(temperatureSHT, 1) + " C";
+    String humidityStr = "Humid: " + String(humidity, 1) + " %";
     String pressureStr = "Pre: " + String(pressure / 100.0F, 1) + " hPa";  // Convert Pa to hPa
     String altitudeStr = "Alt: " + String(altitude, 1) + " m";
-    String temp2Str = "Tem: " + String(temperatureBMP, 1) + " C";
+    String temp2Str = "Temp: " + String(temperatureBMP, 1) + " C";
 
     M5.Display.drawString(tempStr, M5.Display.width() / 2, M5.Display.height() / 2 - 80);
     M5.Display.drawString(humidityStr, M5.Display.width() / 2, M5.Display.height() / 2 -40);
