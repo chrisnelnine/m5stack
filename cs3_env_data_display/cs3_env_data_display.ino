@@ -3,7 +3,7 @@
  * @author chrisnelnine (GitHub)
  * @brief Displays temperature, humidity, pressure, and altitude on the CoreS3 screen.
  * 
- * @hardware M5CoreS3, M5Unit ENVII
+ * @hardware M5CoreS3, M5Unit ENVII (connected to Port A of M5CoreS3)
  */
 
 
@@ -30,17 +30,17 @@ void setup() {
   M5.Display.drawString("Initializing...", M5.Display.width() / 2, M5.Display.height() / 2);
 
   // Initialize I2C for SHT30 and BMP280
-  Wire.begin(2, 1);  // Use SDA = 2, SCL = 1 for Port A
+  Wire.begin(2, 1);  // Port A : SDA = 2, SCL = 1 
 
   // Initialize the SHT30 sensor
-  if (!sht3x.begin(&Wire, 0x44, 2, 1, 100000U)) { // SDA = 2, SCL = 1
+  if (!sht3x.begin(&Wire, 0x44, 2, 1, 100000U)) { // Port A : SDA = 2, SCL = 1; 0x44 is the I2C address for the SHT30 sensor
     M5.Display.fillScreen(TFT_BLACK);
     M5.Display.drawString("SHT30 Error", M5.Display.width() / 2, M5.Display.height() / 2);
     while (1);  // Halt if initialization fails
   }
 
   // Initialize the BMP280 sensor
-  if (!bmp.begin(&Wire, 0x76, 2, 1, 100000U)) {  // SDA = 2, SCL = 1
+  if (!bmp.begin(&Wire, 0x76, 2, 1, 100000U)) {  // Port A : SDA = 2, SCL = 1; 0x76 is the I2C address for the BMP280 sensor
     M5.Display.fillScreen(TFT_BLACK);
     M5.Display.drawString("BMP280 Error", M5.Display.width() / 2, M5.Display.height() / 2);
     while (1);  // Halt if initialization fails
